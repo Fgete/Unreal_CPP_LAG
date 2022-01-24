@@ -42,14 +42,7 @@ void UGrab::Grab(float grabDistance, FVector forwardVector, FTransform location)
 	GEngine->AddOnScreenDebugMessage(0, 2, FColor::Green, start.ToString());
 	GEngine->AddOnScreenDebugMessage(1, 2, FColor::Green, end.ToString());
 
-	// DrawDebugLine(GetWorld(), start, end, FColor::Green, false, 1, 0, 1);
-
 	if (GetWorld()->LineTraceSingleByChannel(outHit, start, end, ECollisionChannel::ECC_PhysicsBody, CollisionParams))
-	{
-		GEngine->AddOnScreenDebugMessage(4, 2, FColor::Green, FString::Printf(TEXT("The Component Being Hit is: %s"), *outHit.GetActor()->GetName()));
 		outHit.GetActor()->SetActorLocation(end);
-	}
-	else
-		GEngine->AddOnScreenDebugMessage(4, 2, FColor::Green, FString::Printf(TEXT("NULL")));
 }
 
